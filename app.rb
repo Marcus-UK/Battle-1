@@ -2,13 +2,21 @@ require 'sinatra/base'
 
 class Battle < Sinatra::Base
 
+enable :sessions
+
 get '/' do
   erb :index
 end
 
 post '/names' do
-  @Player1 = params[:Player1]
-  @Player2 = params[:Player2]
+  session[:player_1_name] = params[:Player1]
+  session[:player_2_name] = params[:Player2]
+  redirect '/play'
+end
+
+get '/play' do
+  @player1 = session[:player_1_name]
+  @player2 = session[:player_2_name]
   erb :play
 end
 
