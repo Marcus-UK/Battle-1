@@ -4,6 +4,8 @@ class Battle < Sinatra::Base
 
 enable :sessions
 
+set :session_secret, 'super secret'
+
 get '/' do
   erb :index
 end
@@ -18,6 +20,12 @@ get '/play' do
   @player1 = session[:player_1_name]
   @player2 = session[:player_2_name]
   erb :play
+end
+
+get '/attack' do
+  @player1 = session[:player_1_name]
+  @player2 = session[:player_2_name]
+  erb :attack
 end
 
 # start the server if ruby file executed directly
