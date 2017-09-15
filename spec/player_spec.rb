@@ -16,12 +16,6 @@ subject(:james) {Player.new('James')}
     end
   end
 
-  describe '#attack' do
-    it 'damages the player' do
-      expect(james).to receive(:receive_damage)
-      marcus.attack(james)
-    end
-  end
 
   describe '#receives_damage' do
     it 'reduced the players hit points' do
